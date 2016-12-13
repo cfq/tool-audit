@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<nav>
+  <ul>
+      {% for cname, category in tests -%}
+          <li><a href="#{{ cname|replace(' ', '')|lower }}">{{ cname }}</a> {{ category|length }}</li>
+      {% endfor %}
+  </ul>
+</nav>
+
+<main>
+	
+
+</main>
+{% endblock %}
