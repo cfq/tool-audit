@@ -3,14 +3,23 @@
 {% block content %}
 <nav>
   <ul>
-      {% for cname, category in tests -%}
-          <li><a href="#{{ cname|replace(' ', '')|lower }}">{{ cname }}</a> {{ category|length }}</li>
-      {% endfor %}
+    {% for cname, category in tests -%}
+    <li><a href="#{{ cname|replace(' ', '')|lower }}">{{ cname }}</a> {{ category|length }}</li>
+    {% endfor -%}
   </ul>
 </nav>
 
 <main>
-	
+  {% for cname, category in tests -%}
+  <h2>{{ cname }}</h2>
 
+    {% for testname, testobj in category %}
+      <h3>{{ testname }}</h3>
+
+      <div class="example">
+        {{ testobj.example | safe }}
+      </div>
+    {% endfor %}
+  {% endfor %}
 </main>
 {% endblock %}
