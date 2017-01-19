@@ -154,7 +154,6 @@ table {
   @include core-14;
   border-collapse: collapse;
   border: 1px solid $border-colour;
-  width: 100%;
 
   margin-top: $gutter;
   margin-bottom: $gutter;
@@ -181,5 +180,62 @@ table {
     th, td {
       border-bottom: 1px solid $border-colour;
     }
+  }
+}
+
+h2 {
+  margin-top: 2em;
+}
+
+h3 {
+  margin: 1.5em 0 0.5em 0;
+}
+
+// .example {
+//   padding: 1em;
+//   margin-bottom: 1em;
+//   border: 1px solid $grey-1;
+// }
+
+.example {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #bfc1c3;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding-top: 30px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+  padding-left: 15px;
+}
+
+@media (min-width: 641px) {
+  .example {
+    padding-top: 45px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+    padding-left: 30px;
+  }
+}
+
+.example:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.2105263158em 0.7894736842em 0.2105263158em 0.7894736842em;
+  font-family: "nta", Arial, sans-serif;
+  font-weight: 400;
+  text-transform: none;
+  font-size: 12px;
+  line-height: 1.25;
+  background: #bfc1c3;
+  color: white;
+}
+
+@media (min-width: 641px) {
+  .example:before {
+    font-size: 14px;
+    line-height: 1.4285714286;
   }
 }

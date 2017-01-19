@@ -20,8 +20,10 @@ gulp.task('sass', function () {
   .pipe(sass({
     outputStyle: 'expanded',
     includePaths: [
-      './node_modules/govuk_frontend_toolkit/stylesheets/',
-      './node_modules/govuk_template_jinja/assets/stylesheets/'
+      './assets/sass/registers',
+      './assets/sass/registers/govuk_frontend_toolkit/stylesheets',
+      './assets/sass/registers/govuk_template/source/assets/stylesheets',
+      './assets/sass/registers/sass'
     ]}).on('error', sass.logError))
   .pipe(gulp.dest(config.paths.assets + '/stylesheets/'))
 })
