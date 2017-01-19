@@ -1,5 +1,13 @@
 var nunjucks = require('nunjucks'),
-    fs = require('fs');
+    fs = require('fs'),
+    path = require('path');
+
+var paths = {
+  testsJson: path.join(__dirname, '../tests.json'),
+  templates: path.join(__dirname, 'templates'),
+  outPath: path.join(__dirname, '../'),
+  out: fname => path.join(paths.outPath, fname)
+};
 
 function getFilename( catname, testname ){
     var filename = [catname.toLowerCase(), testname.toLowerCase()]
@@ -12,34 +20,38 @@ function getFilename( catname, testname ){
     return filename;
 }
 
-var testsFile = fs.readFileSync('../tests.json').toString();
-var tests = JSON.parse(testsFile);
+function generateFiles(){
+  var testsFile = fs.readFileSync(paths.testsJson).toString();
+  var tests = JSON.parse(testsFile);
 
-nunjucks.configure('templates');
+  nunjucks.configure(paths.templates);
 
-// Generate index
+  // Generate index
 
-var indexout = nunjucks.render('index.html', {tests: tests});
+  var indexout = nunjucks.render('index.html', {tests: tests});
+  fs.writeFileSync(paths.out('index.html'), indexout, 'utf8');
 
-fs.writeFileSync('out/index.html', indexout, 'utf8');
+  // Generate individual tests
 
-// Generate individual tests
+  for( catname in tests ){
+    for( testname in tests[catname] ){
+      var testObj = tests[catname][testname];
 
-for( catname in tests ){
-  for( testname in tests[catname] ){
-    var testObj = tests[catname][testname];
+      var filename = getFilename( catname, testname );
 
-    var filename = getFilename( catname, testname );
+      var filecontent = nunjucks.render('single-test.html', {
+        testname: testname,
+        example: testObj.example
+      });
 
-    var filecontent = nunjucks.render('single-test.html', {
-      testname: testname,
-      example: testObj.example
-    });
-
-    fs.writeFileSync('out/tests/' + filename + ".html", filecontent, 'utf8');    
+      fs.writeFileSync(paths.out('tests/' + filename + ".html"), filecontent, 'utf8');    
+    }
   }
+
+  // TODO: Generate results
+
 }
 
-// Generate results
-
-
+module.exports = {
+  generate: generateFiles
+}
