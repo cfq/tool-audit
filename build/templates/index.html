@@ -17,7 +17,7 @@
       <h3>{{ testname }}</h3>
 
       <div class="example">
-        {{ testobj.example | safe }}
+        {{ testobj.example | replace('images/', 'assets/test_images/') | safe }}
       </div>
     {% endfor %}
   {% endfor %}

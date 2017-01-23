@@ -36,4 +36,4 @@ gulp.task('watch-html', function (){
   return gulp.watch(config.paths.htmlSource + '/**', {cwd: './'}, ['generate'])
 })
 
-gulp.task('default', ['watch-sass', 'watch-html'])
+gulp.task('default', ['generate', 'sass', 'watch-sass', 'watch-html'])

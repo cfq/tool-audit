@@ -20,6 +20,15 @@ function getFilename( catname, testname ){
     return filename;
 }
 
+function processExample( example ){
+  if( example.indexOf('images') > -1 ){
+    example = example.replace('images/', 'assets/test_images/');
+    console.log(example);
+  }
+
+  return example;
+}
+
 function generateFiles(){
   var testsFile = fs.readFileSync(paths.testsJson).toString();
   var tests = JSON.parse(testsFile);
@@ -41,7 +50,7 @@ function generateFiles(){
 
       var filecontent = nunjucks.render('single-test.html', {
         testname: testname,
-        example: testObj.example
+        example: processExample(testObj.example)
       });
 
       fs.writeFileSync(paths.out('tests/' + filename + ".html"), filecontent, 'utf8');    
@@ -49,6 +58,8 @@ function generateFiles(){
   }
 
   // TODO: Generate results
+  var resultsout = nunjucks.render('results.html', {tests: tests});
+  fs.writeFileSync(paths.out('results.html'), resultsout, 'utf8');
 
 }
 

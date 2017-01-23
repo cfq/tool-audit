@@ -26,7 +26,19 @@
       <tbody>
           {% for cname, category in tests -%}
             {% for testname, testobj in category %}
-              
+              <tr>
+                <td>{{ testname }}</td>
+                <td>{{ testobj.results.google }}</td>
+                <td>{{ testobj.results.tenon }}</td>
+                <td>{{ testobj.results.wave }}</td>
+                <td>{{ testobj.results.codesniffer }}</td>
+                <td>{{ testobj.results.axe }}</td>
+                <td>{{ testobj.results.tanaguru }}</td>
+                <td>{{ testobj.results.sortsite }}</td>
+                <td>{{ testobj.results.eiii }}</td>
+                <td>{{ testobj.results.achecker }}</td>
+                <td>{{ testobj.results.nu }}</td>
+              </tr>
             {% endfor %}
 
           {% endfor %}
