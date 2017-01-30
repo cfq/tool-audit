@@ -9,6 +9,17 @@ var paths = {
   out: fname => path.join(paths.outPath, fname)
 };
 
+var resultsCopy = {
+  "error": "error found",
+  "warning": "warning reported",
+  "different": "different error found",
+  "notfound": "not found",
+  "identified": "identified but not a error",
+  "manual": "allows manual inspection",
+  "wrong": "wrong error reported",
+  "false-positive": "false positive"
+};
+
 function getFilename( catname, testname ){
     var filename = [catname.toLowerCase(), testname.toLowerCase()]
                       .join('-')
@@ -23,10 +34,12 @@ function getFilename( catname, testname ){
 function processExample( example ){
   if( example.indexOf('images') > -1 ){
     example = example.replace('images/', 'assets/test_images/');
-    console.log(example);
   }
 
   return example;
+}
+
+function resultText( result ){
 }
 
 function generateFiles(){

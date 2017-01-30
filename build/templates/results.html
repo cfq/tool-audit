@@ -28,7 +28,7 @@
             {% for testname, testobj in category %}
               <tr>
                 <td>{{ testname }}</td>
-                <td>{{ testobj.results.google }}</td>
+                <td class="{{ testobj.results.google }}">{{ testobj.results.google }}</td>
                 <td>{{ testobj.results.tenon }}</td>
                 <td>{{ testobj.results.wave }}</td>
                 <td>{{ testobj.results.codesniffer }}</td>
