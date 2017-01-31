@@ -71,7 +71,7 @@ function generateFiles(){
   }
 
   // TODO: Generate results
-  var resultsout = nunjucks.render('results.html', {tests: tests});
+  var resultsout = nunjucks.render('results.html', {tests: tests, rcopy: resultsCopy});
   fs.writeFileSync(paths.out('results.html'), resultsout, 'utf8');
 
 }

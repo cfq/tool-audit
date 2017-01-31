@@ -6,6 +6,7 @@ var generate = require('./build/generate').generate
 var config = {
   "paths": {
     "assets" : "assets/",
+    "build": "build/",
     "htmlSource": "build/templates",
     "htmlOutput": "build/out"
   }
@@ -33,7 +34,10 @@ gulp.task('watch-sass', function () {
 })
 
 gulp.task('watch-html', function (){
-  return gulp.watch(config.paths.htmlSource + '/**', {cwd: './'}, ['generate'])
+  return gulp.watch([
+    config.paths.htmlSource + '/**',
+    config.paths.build + '/generate.js'
+  ], {cwd: './'}, ['generate'])
 })
 
 gulp.task('default', ['generate', 'sass', 'watch-sass', 'watch-html'])

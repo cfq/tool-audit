@@ -1951,3 +1951,37 @@ h3 {
     padding: 30px;
   }
 }
+
+#results-table .error {
+  background: #a8ff26;
+}
+
+#results-table .warning {
+  background: #fba300;
+}
+
+#results-table .different {
+  background: #980f0f;
+  color: #fff;
+}
+
+#results-table .notfound {
+  background: #ff7c7c;
+}
+
+#results-table .identified {
+  background: #A5D9FF;
+}
+
+#results-table .manual {
+  background: #e685ff;
+}
+
+#results-table .wrong {
+  background: #ffcccc;
+}
+
+#results-table .false-positive {
+  background: #981389;
+  color: #fff;
+}

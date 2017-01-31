@@ -240,3 +240,39 @@ h3 {
 //     line-height: 1.4285714286;
 //   }
 // }
+
+#results-table {
+  .error {
+    background: #a8ff26;
+  }
+
+  .warning {
+    background: #fba300;
+  }
+
+  .different {
+    background: #980f0f;
+    color: #fff;
+  }
+
+  .notfound {
+    background: #ff7c7c;
+  }
+
+  .identified {
+    background: #A5D9FF;
+  }
+
+  .manual {
+    background: #e685ff;
+  }
+
+  .wrong {
+    background: #ffcccc;
+  }
+
+  .false-positive {
+    background: #981389;
+    color: #fff;
+  }
+}
