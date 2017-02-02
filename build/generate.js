@@ -39,9 +39,6 @@ function processExample( example ){
   return example;
 }
 
-function resultText( result ){
-}
-
 function generateFiles(){
   var testsFile = fs.readFileSync(paths.testsJson).toString();
   var tests = JSON.parse(testsFile);
@@ -70,7 +67,7 @@ function generateFiles(){
     }
   }
 
-  // TODO: Generate results
+  // Generate results
   var resultsout = nunjucks.render('results.html', {tests: tests, rcopy: resultsCopy});
   fs.writeFileSync(paths.out('results.html'), resultsout, 'utf8');
 
