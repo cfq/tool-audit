@@ -47,7 +47,10 @@ function generateFiles(){
 
   // Generate index
 
-  var indexout = nunjucks.render('index.html', {tests: tests});
+  var indexout = nunjucks.render('index.html', {
+    tests: tests,
+    getFilename: getFilename
+  });
   fs.writeFileSync(paths.out('index.html'), indexout, 'utf8');
 
   // Generate individual tests

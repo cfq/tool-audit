@@ -14,7 +14,11 @@
   <h2>{{ cname }}</h2>
 
     {% for testname, testobj in category %}
-      <h3>{{ testname }}</h3>
+      <h3>
+        <a href="/tests/{{ getFilename( cname, testname ) }}.html">
+          {{ testname }}
+        </a>
+      </h3>
 
       <div class="example">
         {{ testobj.example | replace('images/', 'assets/test_images/') | safe }}
